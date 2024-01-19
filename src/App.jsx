@@ -9,28 +9,22 @@ import PokemonCard from "./components/PokemonCard.jsx";
         useEffect(() => {
             const fetchData = async () => {
                 try {
-                    // Make a request to the Pokemon API
                     const response = await axios.get('https://pokeapi.co/api/v2/pokemon');
 
-                    // Check if the request was successful (status code 200)
                     if (response.status === 200) {
-                        // Parse the JSON response
                         const data = response.data
                         console.log(data)
                         setPokemonData(data.results)
                     } else {
-                        // If the request was not successful, log an error
                         console.error('Failed to fetch Pokemon data');
                     }
                 } catch (error) {
-                    // Handle any exceptions that may occur
                     console.error('Error fetching Pokemon data:', error);
                 }
             };
 
-            // Call the fetchData function when the component mounts
             fetchData();
-        }, []); // Empty dependency array means this effect runs once after the initial render
+        }, []);
 
         return (
             <div>
